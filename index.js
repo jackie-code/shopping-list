@@ -1,5 +1,5 @@
 $("#js-shopping-list-form").submit(function(){
-    this.preventDefault)();
+    this.preventDefault());
     alert("handler called");
     $("ul.shopping-list").append(
         "<li>" +
