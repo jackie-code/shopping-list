@@ -1,24 +1,31 @@
-$("#js-shopping-list-form").submit(function(){
-    this.preventDefault();
-    alert("handler called");
-    $("ul.shopping-list").append(
-        "<li>" +
-        $("#shopping-list-entry").val() + "</li>"
-    );
-});
+$(function(){
+  $('#js-shopping-list-form').submit(function(event) {
+    event.preventDefault();
+    const listItem = $('.js-shopping-list-entry').val();
 
-// "checks" the button by adding a class with .toggleClass that draws a line through it
-$(".shopping-item-toggle").click(function(){
-    $("button.shopping-item-toggle").toggleClass("m__checked");
-});
-
-// also could have done this and made the background color green instead of a line through the shoppint item
-// $(.shopping-item-toggle).click(function(){
-//     $(button.shopping-item-toggle).css("background-color", "green");
-// });
+    $('#shopping-list-entry').val('');
 
 
-// permanently removes items from the list
-$("button.shopping-item-delete").click(function(){
-    $("span.shopping-item").closest("li").remove();
+    $('.shopping-list').append(
+      `<li>
+        <span class="shopping-item">${listItem}</span>
+        <div class="shopping-item-controls">
+          <button class="shopping-item-toggle">
+            <span class="button-label">check</span>
+          </button>
+          <button class="shopping-item-delete">
+            <span class="button-label">delete</span>
+          </button>
+        </div>
+      </li>`);
+  });
+
+  $('.shopping-list').on('click', '.shopping-item-delete', function(event) {
+    $(this).closest('li').remove();
+  });
+
+  $('.shopping-list').on('click', '.shopping-item-toggle', function(event) {
+    $(this).closest('li').find('.shopping-item').toggleClass('shopping-item__checked');
+  });
+
 });
