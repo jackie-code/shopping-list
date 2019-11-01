@@ -3,7 +3,7 @@ $(function(){
     event.preventDefault();
     let listItem = $('#shopping-list-entry').val();
 
-    $('#shopping-list-entry').val('');
+    $('#shopping-list-entry').val();
 
 
     $('.shopping-list').append(
